@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body> 
+    <section class="timer">
+        <div class="container">
+            <div class="timer__body">
+                <h1 class="timer__title">work progress</h1>
+                <div class="timer__circle">
+                    <div class="timer__circle-outer">
+                        <div class="timer__circle-inner">
+                            <span class="hours">00:</span>
+                            <span class="minutes">00:</span>
+                            <span class="seconds">00</span>
+                        </div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <defs>
+                            <linearGradient id="GradientColor">
+                            <stop offset="0%" stop-color="#DA22FF"/>
+                            <stop offset="100%" stop-color="#9733EE"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="80" cy="80" r="70" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="timer__btns">
+                    <button class="btn btn_blue start">Start work</button>
+                    <button class="btn btn_light end">Work done</button>
+                </div>
+                <input type="text" class="timer__input">
+                <div class="block"></div>
+            </div>
+        </div>
+    </section>
+    <script src="js/script.js"></script>
+</body>
+</html>
