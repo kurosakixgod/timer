@@ -1,5 +1,5 @@
 @import './_variables'
-    
+
 .timer 
     background-color: $background-color
     height: 100vh
@@ -8,12 +8,27 @@
     flex-direction: column
     align-items: center
     &__body
+        position: relative
         padding: 1rem
         margin: 0 auto
         width: 20rem
-        height: 20rem
+        min-height: 20rem
         background-color: #fff
         border-radius: 2rem
+        box-shadow: 1px 1px 20px #cac9c9
+        .hamburger
+            position: absolute
+            top: 15px
+            right: 15px
+            z-index: 5
+            cursor: pointer
+        .hamburger span
+            display: block
+            margin-top: 5px
+            height: 3px
+            width: 30px
+            border-radius: 32px
+            background-color: $gray-color     
     &__title
         text-align: center
         font-weight: 600
@@ -21,19 +36,24 @@
         text-transform: uppercase
     &__circle
         position: relative
-        // display: flex
-        // justify-content: center
-        // align-items: center
         margin: 0 auto
-        // margin-top: 1.5rem
-        // border-radius: 100%
-        // border: 1.5rem solid $main-color
-        // font-size: 1.3rem
-        // font-weight: 700
-        // color: $gray-color
+        margin-top: 1.5rem
+        border-radius: 100%
         width: 10rem
         height: 10rem
-        &-outer
+        circle
+            fill: none
+            stroke: url(#GradientColor)
+            stroke-width: 1.2rem
+            stroke-dasharray: 600
+            stroke-dashoffset: 0
+        svg
+            position: absolute
+            width: 10rem
+            height: 10rem
+            top: 0
+            left: 0
+        &_outer
             display: flex
             justify-content: center
             align-items: center
@@ -41,7 +61,7 @@
             height: 10rem
             border-radius: 50%
             box-shadow: 6px 6px 10px -1px rgba(0,0 ,0 ,0.15), -6px -6px 10px -1px rgba(255,255 ,255 ,0.7)
-        &-inner
+        &_inner
             display: flex
             justify-content: center
             align-items: center
@@ -49,31 +69,94 @@
             height: 8rem
             border-radius: 50%
             box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2), inset -4px -4px 6px -1px rgba(255,255,255,0.7), -0.5px -0.5px 0px rgba(255,255,255, 1), 0.5px 0.5px 0px rgba(0,0,0, 0.15), 0px 12px 10px -10px  rgba(0,0,0, 0.05)
+            font-size: 1.3rem
+        &_inner
+            position: relative
+            height: 10rem
+            width: 10rem
+            border-radius: 100%
+            display: flex
+            justify-content: center
+            align-items: center      
     &__btns
         margin-top: 1.5rem
         display: flex
         justify-content: space-around
         align-items: center
-    &__input
-        display: block
-        margin: 0 auto
+    &__ranges
         margin-top: 1rem
+        display: flex
+        flex-direction: column
+        justify-content: space-around
+        .range__wrapper
+            display: flex
+        .range
+            margin-left: 1rem
 
-.block
-    height: 20px
-    width: 50px
-    border: 1px solid black
-circle
-    fill: none
-    stroke: url(#GradientColor)
-    stroke-width: 1.2rem
-    stroke-dasharray: 472
-    stroke-dashoffset: 0
 
-svg
+.modal
     position: absolute
-    width: 10rem
-    height: 10rem
     top: 0
     left: 0
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    align-items: center
+    padding: 1rem
+    margin: 0 auto
+    background-color: #fff
+    border-radius: 2rem
+    width: 100%
+    height: 100%
+    z-index: 4
+    transition: 0.2s all
+    &__text
+        text-align: center
+    &__wrapper
+        display: grid
+        grid-template-columns: 1fr 1fr 150px
+        gap: 20px
+        .round
+            justify-self: flex-start
+            width: 60px
+            height: 60px
+            background-color: $gray-color
+            border-radius: 100%
+            grid-column: 2
+            cursor: pointer
+            transition: background-color 0.3s
+            &:hover
+                background-color: $light-gray-color
+    &__text
+        justify-self: flex-start
+        align-self: center
 
+.timer_off 
+    animation: animOff 2s
+
+.timer_on
+    animation: animOn 2s 
+
+.modalOn
+    animation: modalOn 0.3s
+
+@keyframes modalOn
+    0%
+        opacity: 0
+    100%
+        opacity: 1
+
+.hide
+    display: none
+
+@keyframes animOn
+    0%
+        background-color: green
+    100%
+        background-color: transparent
+
+@keyframes animOff
+    0%
+        background-color: red
+    100%
+        background-color: transparent

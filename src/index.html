@@ -11,13 +11,38 @@
     <section class="timer">
         <div class="container">
             <div class="timer__body">
+                <div class="modal">
+                    <div class="modal__wrapper">
+                        <div class="round modal__stopwatch"></div>
+                        <div class="modal__text">Stopwatch</div>
+                    </div>
+                    
+                    <div class="modal__wrapper">
+                        <div class="round modal__timer"></div>
+                        <div class="modal__text">Timer</div>
+                    </div>
+                    <div class="modal__wrapper">
+                        <div class="round modal__real-time"></div>
+                        <div class="modal__text">Real Time</div>
+                    </div>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span class="long"></span>
+                    <span></span>
+                </div>
+                <div class="stopwatch">
+                    <div class="stopwatch__time-block">
+                        <span class="time hours">00</span>:<span class="time minutes">00</span>:<span class="time seconds">00</span>
+                    </div>
+                </div>
                 <h1 class="timer__title">work progress</h1>
                 <div class="timer__circle">
-                    <div class="timer__circle-outer">
-                        <div class="timer__circle-inner">
-                            <span class="hours">00:</span>
-                            <span class="minutes">00:</span>
-                            <span class="seconds">00</span>
+                    <div class="timer__circle_outer">
+                        <div class="timer__circle_inner">
+                            <span class="time hours">00</span>:
+                            <span class="time minutes">00</span>:
+                            <span class="time seconds">00</span>
                         </div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -34,8 +59,20 @@
                     <button class="btn btn_blue start">Start work</button>
                     <button class="btn btn_light end">Work done</button>
                 </div>
-                <input type="text" class="timer__input">
-                <div class="block"></div>
+                <div class="timer__ranges">
+                    <div class="range__wrapper">
+                        <span>Hours:</span>
+                        <input type="range" class="range range__hours" min="0" max="23" value="3">
+                    </div>
+                    <div class="range__wrapper">
+                        <span>Minutes:</span>
+                        <input type="range" class="range range__minutes" min="0" max="59" value="3">
+                    </div>
+                    <div class="range__wrapper">
+                        <span>Seconds:</span>
+                        <input type="range" class="range range__seconds" min="0" max="59" value="3">
+                    </div>
+                </div>
             </div>
         </div>
     </section>

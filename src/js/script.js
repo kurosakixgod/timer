@@ -1,43 +1,76 @@
 "use strict";
 
 window.addEventListener('DOMContentLoaded', () => {
-    const start = document.querySelector('.start'),
-          end = document.querySelector('.end'),
-          hoursInTimer = document.querySelector('.hours'),
-          minutesInTimer = document.querySelector('.minutes'),
-          secondsInTimer = document.querySelector('.seconds'),
-          input = document.querySelector('.timer__input'),
-          block = document.querySelector('.block')
-    let timerId,
-      hours = 0,
-      minutes = 0,
-      seconds = 0;
-        
-    // function timer(){
-    //     console.log(i);
-    //     i++
-    // }    
-    let i = getCurrentSecond(); 
-    start.addEventListener('click', () => {
-        timerId = setTimeout(function timer(){
-            i--
-            secondsInTimer.textContent = i < 10 ? `0${i}` : `${i}`
-            timerId = setTimeout(timer,1000)
+    const circleInner = document.querySelector('.timer__circle_inner'),
+          inputTime = document.querySelectorAll('.range'),
+          startButton = document.querySelector('.start'),
+          endButton = document.querySelector('.end'),
+          timeInTimer = document.querySelectorAll('.time'),
+          hamburger = document.querySelector('.hamburger'),
+          modal = document.querySelector('.modal'),
+          circle = document.querySelector('.timer circle'),
+          timerLinkButton = document.querySelector('.modal__timer'),
+          stopwatchLinkButton = document.querySelector('.modal__stopwatch'),
+          realTimeLinkButton = document.querySelector('.modal__real-time'),
+          stopwatch = document.querySelector('.stopwatch');
+    console.log(circle);
+    let timerId;
+
+    inputTime.forEach((item,i) => {
+        let inputValue;
+        item.addEventListener('input', () => {
+            inputValue = +item.value;
+            timeInTimer[i].textContent = inputValue < 10 ? `0${inputValue}` : `${inputValue}`;
         })
-        
     })
 
-    function getCurrentSecond() {
-        let inputValue = +input.value;
-        block.textContent = inputValue;
-        console.log(inputValue);
-        return inputValue
-        
+    function startTimer() {
+        const totalTimeArray = [...timeInTimer];
+        let totalTime = totalTimeArray.reduceRight((sum,cur,index) => sum + +cur.textContent*60**(2-index),0);
+        circleInner.classList.add('timer_on');
+        circleInner.classList.remove('timer_off');
+        timerId = setInterval(() => {   
+            if (totalTime <= 0) {
+                clearInterval(timerId)
+                return
+            }
+            circleInner.style.background = `conic-gradient(#7d2ae8 ${totalTime}deg, #ededed 0deg)`
+            totalTime -= 1
+            timeInTimer[2].textContent = (totalTime % 60 < 10) ? `0${totalTime % 60}` : `${totalTime % 60}`;
+            timeInTimer[1].textContent = (Math.floor(totalTime/60 % 60)) < 10 ? `0${Math.floor(totalTime/60 % 60)}` : `${Math.floor(totalTime/60 % 60)}`;
+            timeInTimer[0].textContent = (Math.floor(totalTime/3600 % 24)) < 10 ? `0${Math.floor(totalTime/3600 % 24)}` : `${Math.floor(totalTime/3600 % 24)}`;
+        },1000)
     }
 
-    input.addEventListener('input', getCurrentSecond)
+    function endTimer() {
+        circleInner.classList.remove('timer_on')
+        circleInner.classList.add('timer_off');
+        clearInterval(timerId);
+    }
 
-    end.addEventListener('click', () => {
-        clearInterval(timerId)
+    function modalOn() {
+        modal.classList.add('modalOn')
+        modal.classList.remove('hide');
+    }
+
+    function modalOff() {
+        modal.classList.remove('modalOn');
+        modal.classList.add('hide');
+    }
+
+    hamburger.addEventListener('click', () => {
+        if (modal.classList.contains('hide')) {
+            modalOn();
+            stopwatch.style.display = 'none';
+        } else {
+            modalOff();
+        }
+    })
+
+    startButton.addEventListener('click', startTimer)
+    endButton.addEventListener('click', endTimer)
+    timerLinkButton.addEventListener('click', () => {
+        modalOff();
     })
 })
+
