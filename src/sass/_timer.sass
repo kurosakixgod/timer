@@ -1,34 +1,6 @@
 @import './_variables'
 
 .timer 
-    background-color: $background-color
-    height: 100vh
-    display: flex
-    justify-content: center
-    flex-direction: column
-    align-items: center
-    &__body
-        position: relative
-        padding: 1rem
-        margin: 0 auto
-        width: 20rem
-        min-height: 20rem
-        background-color: #fff
-        border-radius: 2rem
-        box-shadow: 1px 1px 20px #cac9c9
-        .hamburger
-            position: absolute
-            top: 15px
-            right: 15px
-            z-index: 5
-            cursor: pointer
-        .hamburger span
-            display: block
-            margin-top: 5px
-            height: 3px
-            width: 30px
-            border-radius: 32px
-            background-color: $gray-color     
     &__title
         text-align: center
         font-weight: 600
@@ -93,61 +65,13 @@
         .range
             margin-left: 1rem
 
-
-.modal
-    position: absolute
-    top: 0
-    left: 0
-    display: flex
-    flex-direction: column
-    justify-content: space-around
-    align-items: center
-    padding: 1rem
-    margin: 0 auto
-    background-color: #fff
-    border-radius: 2rem
-    width: 100%
-    height: 100%
-    z-index: 4
-    transition: 0.2s all
-    &__text
-        text-align: center
-    &__wrapper
-        display: grid
-        grid-template-columns: 1fr 1fr 150px
-        gap: 20px
-        .round
-            justify-self: flex-start
-            width: 60px
-            height: 60px
-            background-color: $gray-color
-            border-radius: 100%
-            grid-column: 2
-            cursor: pointer
-            transition: background-color 0.3s
-            &:hover
-                background-color: $light-gray-color
-    &__text
-        justify-self: flex-start
-        align-self: center
-
 .timer_off 
     animation: animOff 2s
 
 .timer_on
     animation: animOn 2s 
 
-.modalOn
-    animation: modalOn 0.3s
 
-@keyframes modalOn
-    0%
-        opacity: 0
-    100%
-        opacity: 1
-
-.hide
-    display: none
 
 @keyframes animOn
     0%

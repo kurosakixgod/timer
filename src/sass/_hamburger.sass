@@ -1,0 +1,25 @@
+.hamburger
+    position: absolute
+    top: 18px 
+    right: 15px
+    z-index: 10
+    cursor: pointer
+    &_active
+        span:nth-child(1)
+            transition: transform 0.5s
+            transform: rotate(45deg) translateY(5px)
+            background-color: red
+        span:nth-child(2)
+            transition: transform 0.5s
+            display: none
+        span:nth-child(3)
+            transition: transform 0.5s
+            transform: rotate(-45deg) translateY(-6px)
+            background-color: red
+    & span
+        display: block
+        margin-top: 5px
+        height: 3px
+        width: 30px
+        border-radius: 32px
+        background-color: $gray-color   

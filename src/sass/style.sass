@@ -1,7 +1,13 @@
-@import './_timer'
-@import './_btns'  
-@import './_stopwatch'
 @import './_variables'
+@import './_mixins'
+@import './_app'
+@import './_timer'
+@import './_modal'
+@import './_stopwatch'
+@import './_btns'
+@import './real-time'
+@import './_hamburger'
+
 *
     margin: 0
     padding: 0
@@ -11,3 +17,28 @@
 .container 
     width: 80%
     margin: 0 auto
+
+.main-block
+    position: relative
+    margin: 0 auto
+    height: 25rem
+    width: 20rem
+    background-color: #fff
+    border-radius: 2rem
+    box-shadow: 1px 1px 20px #cac9c9
+    z-index: 1
+    overflow-x: hidden
+.hide
+    display: none   
+.modal_hide
+    transform: translateX(100%)
+.modal_show
+    transform: translateX(0)
+.zYep
+    z-index: 5
+
+.zNone
+    z-index: -1
+
+.lol
+    background-color: red
